@@ -52,7 +52,7 @@ static double _get_match_score(PyObject *py_sequenceA, PyObject *py_sequenceB,
         goto _get_match_score_cleanup;
     if(!(py_B = PySequence_GetItem(py_sequenceB, j)))
         goto _get_match_score_cleanup;
-    if(!(py_arglist = Py_BuildValue("(OO)", py_A, py_B)))
+    if(!(py_arglist = Py_BuildValue("((Oi)(Oi))", py_A, i, py_B, j)))
         goto _get_match_score_cleanup;
 
     if(!(py_result = PyEval_CallObject(py_match_fn, py_arglist)))
